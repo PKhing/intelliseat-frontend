@@ -1,17 +1,18 @@
-import { styled } from '@stitches/react'
+import { styled } from '../../config/stitches'
 
 export const Typography = styled('div', {
+  color: '$black',
   variants: {
     variant: {
-      paragraph2: {
+      p2: {
         fontFamily: '$roboto',
         fontSize: '14px',
       },
-      paragraph1: {
+      p1: {
         fontFamily: '$roboto',
         fontSize: '16px',
       },
-      header: {
+      h: {
         fontFamily: '$roboto',
         fontSize: '16px',
         fontWeight: 'bold',

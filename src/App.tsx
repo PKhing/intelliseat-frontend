@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Header from './components/Header'
+import Tab from './components/Tab'
+import { styled } from './config/stitches'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Layout>
+      <AppContainer>
+        <Header />
+        <Body>
+          <Tab selectedTab="week" />
+        </Body>
+      </AppContainer>
+    </Layout>
   )
 }
+
+const Layout = styled('div', {
+  height: '100dvh',
+  width: '100dvw',
+  backgroundColor: '$black',
+})
+
+const AppContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100dvw',
+  maxWidth: '350px',
+  backgroundColor: '$white',
+  height: '100dvh',
+  margin: '0 auto',
+})
+
+const Body = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '5px 40px',
+})
 
 export default App

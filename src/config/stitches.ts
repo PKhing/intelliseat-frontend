@@ -9,6 +9,7 @@ export const { styled, keyframes, getCssText, config } =
         primaryDark: '#006868',
         black: '#18023C',
         gray: '#7E7788',
+        white: '#FFFFFF',
       },
       fonts: {
         roboto: "'Roboto', sans-serif",
