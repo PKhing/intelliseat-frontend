@@ -8,4 +8,5 @@ export const TabContainer = styled('div', {
   borderRadius: '8px',
   padding: '5px',
   boxShadow: '2px 2px 5px 2px rgba(0, 0, 0, 0.10)',
+  width: '100%',
 })

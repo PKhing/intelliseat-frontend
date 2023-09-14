@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router'
 import { Typography } from '../Typography'
 import { TabContainer } from './styled'
 
 const Tab = ({ selectedTab }: { selectedTab: 'day' | 'week' | 'month' }) => {
   const tabs = ['day', 'week', 'month']
+  const navigate = useNavigate()
 
   return (
     <TabContainer>
@@ -14,6 +16,7 @@ const Tab = ({ selectedTab }: { selectedTab: 'day' | 'week' | 'month' }) => {
             color: tab === selectedTab ? '$black' : '$gray',
             cursor: 'pointer',
           }}
+          onClick={() => navigate(`/${tab}`)}
         >
           {tab}
         </Typography>

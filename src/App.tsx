@@ -1,6 +1,8 @@
 import Header from './components/Header'
-import Tab from './components/Tab'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 import { styled } from './config/stitches'
+import DayPage from './page/DayPage'
 
 function App() {
   return (
@@ -8,7 +10,11 @@ function App() {
       <AppContainer>
         <Header />
         <Body>
-          <Tab selectedTab="week" />
+          <Router>
+            <Routes>
+              <Route path="/day" element={<DayPage />} />
+            </Routes>
+          </Router>
         </Body>
       </AppContainer>
     </Layout>
@@ -29,12 +35,16 @@ const AppContainer = styled('div', {
   backgroundColor: '$white',
   height: '100dvh',
   margin: '0 auto',
+  overflowY: 'auto',
 })
 
 const Body = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  padding: '5px 40px',
+  padding: '5px 40px 30px 40px',
+  gap: '16px',
+  justifyContent: 'center',
+  alignItems: 'center',
 })
 
 export default App
