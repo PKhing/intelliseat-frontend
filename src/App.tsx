@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import { styled } from './config/stitches'
 import DayPage from './page/DayPage'
+import WeekPage from './page/WeekPage'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Router>
             <Routes>
               <Route path="/day" element={<DayPage />} />
+              <Route path="/week" element={<WeekPage />} />
             </Routes>
           </Router>
         </Body>
