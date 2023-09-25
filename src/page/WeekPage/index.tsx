@@ -1,21 +1,32 @@
 import Tab from '../../components/Tab'
-import { Typography } from '../../components/Typography'
 import { styled } from '../../config/stitches'
-import Detail from './components/Detail'
-import Graph from './components/Graph'
+import Detail from '../../components/Detail'
+import Graph from '../../components/Graph'
 
 const WeekPage = () => {
-  const hour = [5, 8, 4, 2, 10, 9, 3, 4]
+  const hours = [
+    {
+      value: 1,
+      label: 'Mon',
+    },
+    {
+      value: 2,
+      label: 'Tue',
+    },
+    { value: 3, label: 'Wed' },
+    { value: 4, label: 'Thu' },
+    { value: 5, label: 'Fri' },
+    { value: 0, label: 'Sat' },
+    { label: 'Sun', isBold: true },
+  ]
   return (
     <>
       <Tab selectedTab="week" />
       <Title>this week</Title>
-      <Typography variant="p2" css={{ color: '$primaryDark' }}>
-        8 hours daily
-      </Typography>
-      <Graph hour={hour} />
-      <Detail />
-      <Detail />
+
+      <Graph data={hours} />
+      <Detail data={hours} label="This Week" />
+      <Detail data={hours} label="This Week" />
     </>
   )
 }

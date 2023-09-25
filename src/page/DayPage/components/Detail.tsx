@@ -4,20 +4,20 @@ import { styled } from '../../../config/stitches'
 const Detail = ({
   detail,
 }: {
-  detail: { startTime: Date; endTime: Date; type: 'left' | 'right' }[]
+  detail: { start: Date; end: Date; side: string }[]
 }) => {
   return (
     <>
-      {detail.map(({ startTime, endTime, type }) => (
+      {detail.map(({ start, end, side }) => (
         <DetailItem>
           <Typography variant="p2">
-            {startTime.getHours()}:{startTime.getMinutes()} -{' '}
-            {endTime.getHours()}:{endTime.getMinutes()}
+            {start.getHours()}:{start.getMinutes()} - {end.getHours()}:
+            {end.getMinutes()}
           </Typography>
           <Typography variant="p2">
-            ทิ้งน้ำหนักทาง{type === 'left' ? 'ซ้าย' : 'ขวา'}
+            ทิ้งน้ำหนักทาง{side === 'left' ? 'ซ้าย' : 'ขวา'}
           </Typography>
-          <img src={type === 'left' ? 'chair-left.svg' : 'chair-right.svg'} />
+          <img src={side === 'left' ? 'chair-left.svg' : 'chair-right.svg'} />
         </DetailItem>
       ))}
     </>
