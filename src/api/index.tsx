@@ -2,6 +2,7 @@ import isSameWeek from 'date-fns/isSameWeek'
 import { apiClient } from '../config/axios'
 import { handleError } from '../utils/handleError'
 import { GetDayResponse, GetWeeksResponse } from './dto'
+import { isSameMonth } from 'date-fns'
 
 export class Api {
   @handleError()
@@ -29,20 +30,31 @@ export class Api {
   }
 
   @handleError()
-  static async getDay() {
-    return {
-      consecutiveSitHour: 1,
-      sitTotal: 1,
-      badSitHour: 1,
-      badPosture: [
-        {
-          start: new Date(),
-          end: new Date(),
-          side: 'left',
-        },
-      ],
-    }
+  static async getMonth() {
+    const res = await apiClient.get<GetWeeksResponse>('/sitdata/days')
 
+    const days = res.data.data.map(({ date, sitHour }) => ({
+      date: new Date(date),
+      sitHour,
+    }))
+
+    const data: { date: Date; sitHour: number }[][] = [[]]
+
+    let tmp = days[0].date
+
+    for (const { date, sitHour } of days) {
+      if (isSameMonth(date, tmp)) {
+        data[data.length - 1].push({ date, sitHour })
+      } else {
+        data.push([{ date, sitHour }])
+      }
+      tmp = date
+    }
+    return data
+  }
+
+  @handleError()
+  static async getDay() {
     const res = await apiClient.get<GetDayResponse>('/sitdata/day')
 
     const data = res.data

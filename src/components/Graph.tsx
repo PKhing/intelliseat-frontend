@@ -2,21 +2,19 @@ import { styled } from '../config/stitches'
 import { Typography } from './Typography'
 
 export interface GraphProps {
-  data: {
-    value?: number
-    label?: string
-    isBold?: boolean
-  }[]
+  value?: number
+  label?: string
+  isBold?: boolean
 }
 
-const Graph = ({ data }: GraphProps) => {
+const Graph = ({ data }: { data: GraphProps[] }) => {
   const average =
     data.reduce((acc, { value }) => acc + (value ?? 0), 0) /
     data.reduce((acc, { value }) => acc + (value ? 1 : 0), 0)
   return (
     <>
       <Typography variant="p2" css={{ color: '$primaryDark' }}>
-        {average} hours daily
+        {average.toFixed(1)} hours daily
       </Typography>
       <Container>
         {data.map(({ value, label, isBold }, idx) => (
@@ -26,6 +24,7 @@ const Graph = ({ data }: GraphProps) => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              width: '6px',
             }}
           >
             <GraphItem
@@ -91,7 +90,7 @@ const Container = styled('div', {
 })
 
 const GraphItem = styled('div', {
-  width: '7px',
+  width: '6px',
   borderRadius: '4px',
   backgroundColor: '$primary',
   zIndex: 1,
@@ -101,6 +100,7 @@ const GraphItemText = styled('div', {
   fontFamily: '$inter',
   fontSize: '12px',
   color: '$black',
+  minHeight: '18px',
 })
 
 export default Graph
