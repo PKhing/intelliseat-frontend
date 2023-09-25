@@ -15,6 +15,7 @@ const Tab = ({ selectedTab }: { selectedTab: 'day' | 'week' | 'month' }) => {
           css={{
             color: tab === selectedTab ? '$black' : '$gray',
             cursor: 'pointer',
+            flexBasis: 0,
           }}
           onClick={() => navigate(`/${tab}`)}
         >

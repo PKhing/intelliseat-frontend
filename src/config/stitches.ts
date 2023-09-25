@@ -12,8 +12,8 @@ export const { styled, keyframes, getCssText, config } =
         white: '#FFFFFF',
       },
       fonts: {
-        roboto: "'Roboto', sans-serif",
-        inter: "'Inter', sans-serif",
+        roboto: "'Roboto', 'Kanit', sans-serif",
+        inter: "'Inter', 'Kanit', sans-serif",
       },
     },
 
@@ -30,6 +30,6 @@ export type CSS = Stitches.CSS<typeof config>
 
 Stitches.globalCss({
   '@import': [
-    "url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap')",
+    "url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kanit&family=Roboto:wght@400;500;700&display=swap')",
   ],
 })()
