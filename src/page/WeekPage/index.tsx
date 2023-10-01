@@ -24,18 +24,21 @@ const WeekPage = () => {
 
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-  const graphData: GraphProps[] = data[0].map(({ date, sitHour }) => ({
-    value: sitHour,
-    label: date.toLocaleDateString('en-US', { weekday: 'short' }),
-  }))
+  let graphData: GraphProps[] = []
 
-  graphData[0].isBold = true
+  if (data.length > 0) {
+    graphData = data[0].map(({ date, sitHour }) => ({
+      value: sitHour,
+      label: date.toLocaleDateString('en-US', { weekday: 'short' }),
+    }))
+  }
+
   graphData.reverse()
 
   const tmp = []
 
   for (let i = 0; i < 7; i++) {
-    if (graphData[0].label == days[i]) break
+    if (graphData.length > 0 && graphData[0].label == days[i]) break
     tmp.push({
       label: days[i],
     })
@@ -47,6 +50,16 @@ const WeekPage = () => {
     graphData.push({
       label: days[i],
     })
+  }
+
+  for (let i = 0; i < 7; i++) {
+    if (
+      new Date().toLocaleDateString('en-US', { weekday: 'short' }) ===
+      graphData[i].label
+    ) {
+      graphData[i].isBold = true
+      break
+    }
   }
 
   return (

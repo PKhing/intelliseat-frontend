@@ -23,18 +23,21 @@ const MonthPage = () => {
 
   if (!data) return null
 
-  const graphData: GraphProps[] = data[0]
-    .map(({ date, sitHour }) => ({
-      value: sitHour,
-      label: String(date.getDate()),
-    }))
-    .reverse()
-  console.log(graphData[0].label)
+  let graphData: GraphProps[] = []
 
-  for (let i = Number(graphData[0].label) - 1; i > 0; i--) {
-    graphData.unshift({
-      label: String(i),
-    })
+  if (data[0].length > 0) {
+    graphData = data[0]
+      .map(({ date, sitHour }) => ({
+        value: sitHour,
+        label: String(date.getDate()),
+      }))
+      .reverse()
+
+    for (let i = Number(graphData[0].label) - 1; i > 0; i--) {
+      graphData.unshift({
+        label: String(i),
+      })
+    }
   }
 
   for (let i = graphData.length; i < getDaysInMonth(new Date()); i++) {

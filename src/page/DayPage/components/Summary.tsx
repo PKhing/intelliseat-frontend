@@ -1,5 +1,6 @@
 import { styled } from '@stitches/react'
 import { Typography } from '../../../components/Typography'
+import { getUnit, getValue } from '../../../utils/getValue'
 
 const Summary = ({
   total,
@@ -14,15 +15,15 @@ const Summary = ({
         summary
       </Typography>
       <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-        <Hour>{total}</Hour>
+        <Hour>{getValue(total)}</Hour>
         <Typography variant="p2" css={{ color: '$primaryDark' }}>
-          hours sat total
+          {getUnit(total)} sat total
         </Typography>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-        <Hour>{badPosture}</Hour>
+        <Hour>{getValue(badPosture)}</Hour>
         <Typography variant="p2" css={{ color: '$primaryDark' }}>
-          bad posture hours
+          bad posture {getUnit(badPosture)}
         </Typography>
       </div>
     </>

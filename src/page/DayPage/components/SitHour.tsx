@@ -1,7 +1,8 @@
 import { styled } from '../../../config/stitches'
 import { Typography } from '../../../components/Typography'
+import { getUnit, getValue } from '../../../utils/getValue'
 
-const SitHour = ({ hourSit }: { hourSit: number }) => {
+const SitHour = ({ minSit }: { minSit: number }) => {
   return (
     <>
       <Typography variant="p1" css={{ color: '$primaryDark' }}>
@@ -9,16 +10,16 @@ const SitHour = ({ hourSit }: { hourSit: number }) => {
       </Typography>
       <HourContainer2>
         <HourContainer>
-          <Hour>{hourSit}</Hour>
+          <Hour>{getValue(minSit)}</Hour>
           <Typography
             variant="caption"
             css={{ color: '$primaryDark', marginTop: '-10px' }}
           >
-            hours
+            {getUnit(minSit)}
           </Typography>
         </HourContainer>
       </HourContainer2>
-      <Typography variant="p2">ลุกบ้าง!!! 💪</Typography>
+      {minSit >= 60 && <Typography variant="p2">ลุกบ้าง!!! 💪</Typography>}
     </>
   )
 }

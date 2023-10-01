@@ -6,9 +6,9 @@ export interface GetWeeksResponse {
 }
 
 export interface GetDayResponse {
-  consecutiveSitHour: number
+  consecutiveSitMin: number
   sitTotal: number
-  badSitHour: number
+  badSitMin: number
   badPosture: [
     {
       start: string

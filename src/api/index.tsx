@@ -16,6 +16,8 @@ export class Api {
 
     const data: { date: Date; sitHour: number }[][] = [[]]
 
+    if (days.length === 0) return data
+
     let tmp = days[0].date
 
     for (const { date, sitHour } of days) {
@@ -39,6 +41,8 @@ export class Api {
     }))
 
     const data: { date: Date; sitHour: number }[][] = [[]]
+
+    if (days.length === 0) return data
 
     let tmp = days[0].date
 

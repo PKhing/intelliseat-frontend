@@ -10,11 +10,11 @@ export interface GraphProps {
 const Graph = ({ data }: { data: GraphProps[] }) => {
   const average =
     data.reduce((acc, { value }) => acc + (value ?? 0), 0) /
-    data.reduce((acc, { value }) => acc + (value ? 1 : 0), 0)
+    (data.reduce((acc, { value }) => acc + (value ? 1 : 0), 0) || 1)
   return (
     <>
       <Typography variant="p2" css={{ color: '$primaryDark' }}>
-        {average.toFixed(1)} hours daily
+        {average.toPrecision(1)} hours daily
       </Typography>
       <Container>
         {data.map(({ value, label, isBold }, idx) => (

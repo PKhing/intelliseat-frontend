@@ -7,9 +7,9 @@ import Summary from './components/Summary'
 import { Api } from '../../api'
 
 export interface DayPageProps {
-  consecutiveSitHour: number
+  consecutiveSitMin: number
   sitTotal: number
-  badSitHour: number
+  badSitMin: number
   badPosture: {
     start: Date
     end: Date
@@ -29,14 +29,14 @@ const DayPage = () => {
 
   if (!data) return null
 
-  const { consecutiveSitHour, sitTotal, badSitHour, badPosture } = data
+  const { consecutiveSitMin, sitTotal, badSitMin, badPosture } = data
 
   return (
     <>
       <Tab selectedTab="day" />
       <Title>today</Title>
-      <SitHour hourSit={consecutiveSitHour} />
-      <Summary total={sitTotal} badPosture={badSitHour} />
+      <SitHour minSit={consecutiveSitMin} />
+      <Summary total={sitTotal} badPosture={badSitMin} />
       <Detail detail={badPosture} />
     </>
   )
