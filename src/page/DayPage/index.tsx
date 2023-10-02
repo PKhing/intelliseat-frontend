@@ -5,6 +5,8 @@ import Detail from './components/Detail'
 import SitHour from './components/SitHour'
 import Summary from './components/Summary'
 import { Api } from '../../api'
+import useWebSocket from 'react-use-websocket'
+import { GetDayResponse } from '../../api/dto'
 
 export interface DayPageProps {
   consecutiveSitMin: number
@@ -19,6 +21,21 @@ export interface DayPageProps {
 
 const DayPage = () => {
   const [data, setData] = useState<DayPageProps>()
+
+  useWebSocket('wss://intelliseat-api.pkhing.dev/ws', {
+    onMessage: (e) => {
+      const data: GetDayResponse = JSON.parse(e.data)
+
+      setData({
+        ...data,
+        badPosture: data.badPosture.map(({ side, start, end }) => ({
+          side,
+          start: new Date(start),
+          end: new Date(end),
+        })),
+      })
+    },
+  })
 
   useEffect(() => {
     const fetchData = async () => {

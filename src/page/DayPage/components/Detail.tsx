@@ -9,15 +9,15 @@ const Detail = ({
   return (
     <>
       {detail.map(({ start, end, side }) => (
-        <DetailItem>
+        <DetailItem key={String(start)}>
           <Typography variant="p2">
             {start.getHours()}:{start.getMinutes()} - {end.getHours()}:
             {end.getMinutes()}
           </Typography>
           <Typography variant="p2">
-            ทิ้งน้ำหนักทาง{side === 'left' ? 'ซ้าย' : 'ขวา'}
+            ทิ้งน้ำหนักทาง{side === 'LEFT' ? 'ซ้าย' : 'ขวา'}
           </Typography>
-          <img src={side === 'left' ? 'chair-left.svg' : 'chair-right.svg'} />
+          <img src={side === 'LEFT' ? 'chair-left.svg' : 'chair-right.svg'} />
         </DetailItem>
       ))}
     </>
