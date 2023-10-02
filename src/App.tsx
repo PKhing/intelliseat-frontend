@@ -36,7 +36,7 @@ const AppContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   width: '100dvw',
-  maxWidth: '350px',
+  maxWidth: '420px',
   backgroundColor: '$white',
   height: '100dvh',
   margin: '0 auto',

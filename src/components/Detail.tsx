@@ -14,7 +14,7 @@ const Detail = ({ label, data }: DetailProps) => {
     <>
       <TitleContainer>
         <Text>{label}</Text>
-        <Text>{total} hours sat total</Text>
+        <Text>{Number(total.toFixed(2))} hours sat total</Text>
       </TitleContainer>
       <DetailContainer>
         {data.map(({ value, label }, idx) => {
