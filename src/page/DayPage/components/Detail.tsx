@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import { Typography } from '../../../components/Typography'
 import { styled } from '../../../config/stitches'
 
@@ -6,13 +7,34 @@ const Detail = ({
 }: {
   detail: { start: Date; end: Date; side: string }[]
 }) => {
+  if (detail.length === 0) return null
+
+  const formattedDetail = detail.map(({ start, end, side }) => ({
+    start: format(start, 'HH:mm'),
+    end: format(end, 'HH:mm'),
+    side,
+  }))
+
+  const grouppedDetail = [formattedDetail[0]]
+  let end_bf = formattedDetail[0].end
+  for (let i = 1; i < formattedDetail.length; i++) {
+    if (formattedDetail[i].start == end_bf) {
+      end_bf = formattedDetail[i].end
+      grouppedDetail[grouppedDetail.length - 1].end = end_bf
+    } else {
+      grouppedDetail.push(formattedDetail[i])
+      end_bf = formattedDetail[i].end
+    }
+  }
+
+  grouppedDetail.reverse()
+
   return (
     <>
-      {detail.map(({ start, end, side }) => (
+      {grouppedDetail.map(({ start, end, side }) => (
         <DetailItem key={String(start)}>
           <Typography variant="p2">
-            {start.getHours()}:{start.getMinutes()} - {end.getHours()}:
-            {end.getMinutes()}
+            {start} - {end}
           </Typography>
           <Typography variant="p2">
             ทิ้งน้ำหนักทาง{side === 'LEFT' ? 'ซ้าย' : 'ขวา'}
