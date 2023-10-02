@@ -14,7 +14,7 @@ const Graph = ({ data }: { data: GraphProps[] }) => {
   return (
     <>
       <Typography variant="p2" css={{ color: '$primaryDark' }}>
-        {average.toPrecision(1)} hours daily
+        {Number(average.toFixed(2))} hours daily
       </Typography>
       <Container>
         {data.map(({ value, label, isBold }, idx) => (
