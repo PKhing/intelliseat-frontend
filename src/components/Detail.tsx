@@ -22,7 +22,7 @@ const Detail = ({ label, data }: DetailProps) => {
           return (
             <React.Fragment key={idx}>
               <Text css={{ fontWeight: 700, color: '$gray' }}>{label}</Text>
-              <Text> {value} hours sat</Text>
+              <Text> {Number(value.toFixed(2))} hours sat</Text>
             </React.Fragment>
           )
         })}

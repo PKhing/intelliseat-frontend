@@ -32,6 +32,7 @@ const Summary = ({
 
 const Hour = styled('div', {
   fontFamily: '$inter',
+  color: '$black',
   fontSize: '24px',
   fontWeight: 'bold',
   marginRight: '20px',
