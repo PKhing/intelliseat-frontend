@@ -19,7 +19,7 @@ const SitHour = ({ minSit }: { minSit: number }) => {
           </Typography>
         </HourContainer>
       </HourContainer2>
-      {minSit >= 60 && <Typography variant="p2">ลุกบ้าง!!! 💪</Typography>}
+      {minSit >= 1 && <Typography variant="p2">ลุกบ้าง!!! 💪</Typography>}
     </>
   )
 }
